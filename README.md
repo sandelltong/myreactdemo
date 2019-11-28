@@ -14,6 +14,5 @@ $ npm run dev
 ## How to run it through docker
 Open command window and go to the root folder, then run below command
 ```
-$ npm install && cd client && npm install && cd .. 
-$ npm run dev
+$ Build.cmd
 ```
