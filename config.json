@@ -1,0 +1,10 @@
+{
+    "development": {
+        "config_id": "development",
+        "database": "mongodb://localhost:27017/nodetest"
+    },
+    "production": {
+        "config_id": "production",
+        "database": "mongodb://localhost:27017/nodetest"
+    }
+}
