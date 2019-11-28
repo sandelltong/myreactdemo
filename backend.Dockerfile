@@ -3,17 +3,18 @@ FROM node
 WORKDIR /src/app
 
 COPY package*.json ./
+
+RUN npm install
+
 COPY *.js ./
 COPY .env ./
 
-COPY controllers/* ./controllers/
-COPY public/* ./public/
-COPY routes/* ./routes/
-COPY models/* ./models/
-COPY views/* ./views/
 COPY bin/* ./bin/
-
-RUN npm install
+COPY config/* ./config/
+COPY controllers/* ./controllers/
+COPY models/* ./models/
+COPY routes/* ./routes/
+COPY test/* ./test/
 
 EXPOSE 5000
 
