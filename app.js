@@ -6,7 +6,7 @@ var morgan = require('morgan');
 var mongoose = require('mongoose');
 const jwt = require('jsonwebtoken');
 const User = require('./models/userModel')
-const config = require('./config.js');
+const config = require('./config/config.js');
 
 require("dotenv").config({
  path: path.join(__dirname, "../.env")

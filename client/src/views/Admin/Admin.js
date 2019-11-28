@@ -4,7 +4,6 @@ import IncidentMgmtTable from '../../components/Tables/IncidentMgmtTable'
 import IncidentForm from '../../components/Forms/IncidentForm'
 import DeleteIncidentDialog from '../../components/Dialogs/DeleteIncidentDialog'
 import axios from "axios";
-import API_URL from '../../config'
 
 const Admin = props => {
     const incidentsData = [];
@@ -27,8 +26,7 @@ const Admin = props => {
 
     const fetchDataFromServer = async () => {
         try {      
-            console.log(API_URL)
-            const response = await axios.get(API_URL + '/api/incidents');
+            const response = await axios.get('/api/incidents');
             setIncidents(response.data.incidents);
             return response.data;
           }
@@ -57,7 +55,7 @@ const Admin = props => {
 	const updateIncident = async (id, updatedIncident) => {   
         if (id === null) {
             try {
-                await axios.post(API_URL + '/api/incidents', updatedIncident);
+                await axios.post('/api/incidents', updatedIncident);
                 fetchDataFromServer();
             }
             catch(error) {
@@ -67,7 +65,7 @@ const Admin = props => {
         else {
             try {
                 console.log(id)
-                await axios.put(API_URL + '/api/incidents/update', {        
+                await axios.put('/api/incidents/update', {        
                     id: id,
                     update: updatedIncident
                 });
@@ -86,7 +84,7 @@ const Admin = props => {
         console.log(deletedIncident);
         // setIncidents(incidents.filter(incident => incident.id !== deletedIncident.id));   
         try {
-            await axios.delete(API_URL + '/api/incidents/delete', { data: {
+            await axios.delete('/api/incidents/delete', { data: {
                 id: deletedIncident.id
               }
             });
