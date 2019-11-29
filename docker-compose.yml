@@ -8,17 +8,31 @@ services:
       dockerfile: client.Dockerfile       
     ports:
       - "3000:3000" 
+    networks:
+      - webappnetwork
 
   backend:
     image: "myapp-api:${APITAG}"
     build:
       context: .
-      dockerfile: backend.Dockerfile       
+      dockerfile: backend.Dockerfile   
+      network: host    
     ports:
       - "5000:5000"   
+    networks:
+      - webappnetwork
 
   mongo:
     image: mongo
     restart: always    
     ports:
      - 27017:27017
+    networks:
+      - webappnetwork
+
+  
+    
+networks:
+    webappnetwork:
+        driver: bridge
+        
