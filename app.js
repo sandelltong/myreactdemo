@@ -7,6 +7,7 @@ var mongoose = require('mongoose');
 const jwt = require('jsonwebtoken');
 const User = require('./models/userModel')
 const config = require('./config/config.js');
+var cors = require('cors');
 
 require("dotenv").config({
  path: path.join(__dirname, "../.env")
@@ -40,6 +41,7 @@ db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
+app.use(cors());
 app.use(morgan('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
