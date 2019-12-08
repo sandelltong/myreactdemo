@@ -1,13 +1,9 @@
-FROM node:alpine
+FROM nginx
 
-WORKDIR /usr/app/client/
+COPY nginx.conf /etc/nginx/nginx.conf
 
-COPY package*.json ./
+WORKDIR /usr/share/nginx/html
 
-RUN npm install
+COPY build/ .
 
-COPY . .
-
-EXPOSE 3000
-
-CMD ["npm", "start"]
+EXPOSE 80
