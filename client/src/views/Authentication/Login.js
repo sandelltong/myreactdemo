@@ -12,8 +12,9 @@ const Login = props => {
     const [ user, setUser ] = useState(initialUser);
     const [ loginSuccess, setLoginSuccess ] = useState(false);
 
-    const onLogin = async () => {
+    const onLogin = async (event) => {
         try {
+            event.preventDefault();
             var response = await axios.post('/api/users/login', user);
             console.log(response)
         }
